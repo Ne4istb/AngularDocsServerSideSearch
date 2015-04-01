@@ -6,7 +6,7 @@ import 'dart:async';
 @Injectable()
 class SearchService {
 
-	final String URL = 'http://localhost:8080/find';
+	final String URL = 'http://localhost:8080/api/find';
 
 	Http _http;
 

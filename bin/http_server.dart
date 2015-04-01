@@ -8,10 +8,12 @@ main() {
   app.setShelfHandler(
       createStaticHandler("../web",  defaultDocument: "index.html", serveFilesOutsidePath: true));
 
+
+
   app.start();
 }
 
-@app.Route("/find")
+@app.Route("/api/find")
 find(@app.QueryParam("query") String query) {
   return new SearchService().search(query);
 }

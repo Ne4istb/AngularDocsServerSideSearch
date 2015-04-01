@@ -11,9 +11,13 @@ import 'package:angularDartRemote/searchService.dart';
 class SearchComponent {
 
   SearchService _searchService;
+  RouteProvider _routeProvider;
   var _result;
 
-  SearchComponent(this._searchService) {
+  SearchComponent(this._searchService, this._routeProvider) {
+    print(_routeProvider.parameters);
+    var query = _routeProvider.parameters["query"];
+    print("test $query");
     _searchService.find('di').then((result) => _result = result);
   }
 

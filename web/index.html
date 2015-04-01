@@ -7,15 +7,15 @@
     <script src="packages/web_components/platform.js"></script>
     <script src="packages/web_components/dart_support.js"></script>
 
-    <link rel="stylesheet" href="../bower_components/open-sans-fontface/open-sans.css" type="text/css">
     <link rel="stylesheet" href="https://docs.angularjs.org/components/bootstrap-3.1.1/css/bootstrap.min.css" type="text/css">
 
     <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-    <search-result></search-result>
-
+    <div>
+        <ng-view></ng-view>
+    </div>
     <script type="application/dart" src="main.dart"></script>
     <script src="packages/browser/dart.js"></script>
 

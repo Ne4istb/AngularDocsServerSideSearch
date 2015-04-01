@@ -1,11 +1,24 @@
-<div class="search-results-container">
-    <div class="container">
-        <div class="search-results-frame">
-            <div class="search-results-group" ng-class="col-group-{{group.name}}" ng-repeat="group in result">
-                <h4 class="search-results-group-heading ng-binding">{{group.name}}</h4>
-                <div class="search-results">
-                    <div class="search-result" ng-repeat="item in group.group">
-                        - <a href="{{item.path}}">{{item.titleWords}}</a>
+<div>
+    <div class="header container">
+        <div class="row">
+            <div class="image">
+                <img src="/images/angularjs-for-header-only.svg" alt=""/>
+            </div>
+            <div class="docs-search">
+                <span class="glyphicon glyphicon-search search-icon"></span>
+                <input type="text" class="input" value="test"/>
+            </div>
+        </div>
+    </div>
+    <div class="search-results-container">
+        <div class="container">
+            <div class="search-results-frame">
+                <div class="search-results-group" ng-class="col-group-{{group.name}}" ng-repeat="group in result">
+                    <h4 class="search-results-group-heading ng-binding">{{group.name}}</h4>
+                    <div class="search-results">
+                        <div class="search-result" ng-repeat="item in group.group">
+                            - <a href="{{item.path}}">{{item.titleWords}}</a>
+                        </div>
                     </div>
                 </div>
             </div>
