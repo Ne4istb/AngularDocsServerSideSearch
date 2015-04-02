@@ -5,8 +5,8 @@ import 'package:angular/angular.dart';
 void searchRouteInitializer(Router router, RouteViewFactory views) {
   views.configure({
     '/': ngRoute(
-        path: '/',
-        viewHtml: '<search-result></search-result>',
+        path: '/:query',
+        viewHtml: '<search_result></search_result>',
         defaultRoute: true)
   });
 }

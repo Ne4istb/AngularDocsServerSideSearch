@@ -15,4 +15,4 @@ dev_dependencies:
 transformers:
 - angular:
     html_files:
-      - lib/search-result/search-result.html
+      - lib/search_result/search_result.html

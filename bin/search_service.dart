@@ -5,17 +5,18 @@ import 'package:http/http.dart' as http;
 
 class SearchService {
 
-//  final String URL = 'https://docs.angularjs.org/js/search-data.json';
-  final String URL = 'http://localhost:8080/data.json';
+  final String URL = urlDocs + "js/search-data.json";
+
+  static get urlDocs => "https://docs.angularjs.org/";
 
   Future<String> search(query) {
     return http
     .get(URL)
-    .then((response) => group(JSON.decode(response.body)))
-    .then((groupedItems) => filter(groupedItems, query.toLowerCase()));
+    .then((response) => _group(JSON.decode(response.body)))
+    .then((groupedItems) => _filter(groupedItems, query.toLowerCase()));
   }
 
-  Map<String, List<Map>> group(Iterable<Map> items) {
+  Map<String, List<Map>> _group(Iterable<Map> items) {
 
     Map groupedItems = new Map<String, List<Map>>();
 
@@ -34,21 +35,21 @@ class SearchService {
     return groupedItems;
   }
 
-  String filter(Map<String, List<Map>> groupedItems, String query) {
+  String _filter(Map<String, List<Map>> groupedItems, String query) {
 
     List result = [];
     groupedItems.forEach((key, List<Map> value) {
       Map group = new Map();
       print(value);
       group['name'] = key;
-      group['group'] = filterGroup(value, query);
+      group['group'] = _filterGroup(value, query);
       result.add(group);
     });
 
     return JSON.encode(result);
   }
 
-  List<Map> filterGroup(List<Map> group, String query) {
+  List<Map> _filterGroup(List<Map> group, String query) {
 
     List<Map> result = [];
 

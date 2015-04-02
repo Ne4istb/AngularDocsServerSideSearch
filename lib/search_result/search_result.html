@@ -6,18 +6,18 @@
             </div>
             <div class="docs-search">
                 <span class="glyphicon glyphicon-search search-icon"></span>
-                <input type="text" class="input" value="test"/>
+                <input type="text" class="input" ng-model="query" ng-change="search()"/>
             </div>
         </div>
     </div>
     <div class="search-results-container">
         <div class="container">
             <div class="search-results-frame">
-                <div class="search-results-group" ng-class="col-group-{{group.name}}" ng-repeat="group in result">
+                <div class="search-results-group col-group-{{group.name}}" ng-repeat="group in result">
                     <h4 class="search-results-group-heading ng-binding">{{group.name}}</h4>
                     <div class="search-results">
                         <div class="search-result" ng-repeat="item in group.group">
-                            - <a href="{{item.path}}">{{item.titleWords}}</a>
+                            - <a href="{{angularSiteUrl}}{{item.path}}">{{item.titleWords|shortNameFilter}}</a>
                         </div>
                     </div>
                 </div>
