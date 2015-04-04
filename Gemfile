@@ -1,1 +1,3 @@
-gem 'heroku-deflater', :group => :production
+group :production do
+   gem 'heroku-deflater'
+end
