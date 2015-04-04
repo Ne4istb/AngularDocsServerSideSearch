@@ -11,10 +11,13 @@ class SearchService {
   static get urlDocs => shared.Constants.angularSiteUrl;
 
   Future<String> search(query) {
+
+    var searchQuery = Uri.decodeFull(query).toLowerCase();
+
     return http
     .get(URL)
     .then((response) => _group(JSON.decode(response.body)))
-    .then((groupedItems) => _filter(groupedItems, query.toLowerCase()));
+    .then((groupedItems) => _filter(groupedItems, searchQuery));
   }
 
   Map<String, List<Map>> _group(Iterable<Map> items) {
