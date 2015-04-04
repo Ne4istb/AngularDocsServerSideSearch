@@ -24,6 +24,8 @@ class SearchComponent {
     if (query == null)
       query = '';
 
+    query = Uri.decodeFull(query).toLowerCase();
+
     search();
   }
 
