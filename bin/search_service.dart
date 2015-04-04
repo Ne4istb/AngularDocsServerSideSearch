@@ -15,14 +15,14 @@ class SearchService {
     var searchQuery = Uri.decodeFull(query).toLowerCase();
 
     return http
-    .get(URL)
-    .then((response) => _group(JSON.decode(response.body)))
-    .then((groupedItems) => _filter(groupedItems, searchQuery));
+      .get(URL)
+      .then((response) => _group(JSON.decode(response.body)))
+      .then((groupedItems) => _filter(groupedItems, searchQuery));
   }
 
   Map<String, List<Map>> _group(Iterable<Map> items) {
 
-    Map groupedItems = new Map<String, List<Map>>();
+    var groupedItems = new Map<String, List<Map>>();
 
     items.forEach((item) {
 
@@ -41,11 +41,11 @@ class SearchService {
 
   String _filter(Map<String, List<Map>> groupedItems, String query) {
 
-    List result = [];
+    var result = [];
     groupedItems.forEach((key, List<Map> value) {
-      Map group = new Map();
-      group['name'] = key;
-      group['group'] = _filterGroup(value, query);
+      var group = new Map()
+        ..['name'] = key
+        ..['group'] = _filterGroup(value, query);
       result.add(group);
     });
 
@@ -54,7 +54,7 @@ class SearchService {
 
   List<Map> _filterGroup(List<Map> group, String query) {
 
-    List<Map> result = [];
+    var result = [];
 
     var filteredByTitle = group.where((item) => item['titleWords'].contains(query));
     result.addAll(filteredByTitle);
