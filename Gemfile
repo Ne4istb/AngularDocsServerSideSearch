@@ -1,3 +1,9 @@
-source :rubygems
+source 'http://rubygems.org'
 
-gem 'heroku-deflater', :group => :production
+group :deployment do
+  gem 'heroku'
+end
+
+group :production do
+  gem 'heroku-deflater'
+end
