@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:http/http.dart' as http;
+import '../lib/shared/constants.dart' as shared;
 
 class SearchService {
 
   final String URL = urlDocs + "js/search-data.json";
 
-  static get urlDocs => "https://docs.angularjs.org/";
+  static get urlDocs => shared.Constants.angularSiteUrl;
 
   Future<String> search(query) {
     return http
@@ -40,7 +41,6 @@ class SearchService {
     List result = [];
     groupedItems.forEach((key, List<Map> value) {
       Map group = new Map();
-      print(value);
       group['name'] = key;
       group['group'] = _filterGroup(value, query);
       result.add(group);
