@@ -2,12 +2,11 @@ library search_service;
 
 import 'package:angular/angular.dart';
 import 'dart:async';
-
+import 'dart:html';
 @Injectable()
 class SearchService {
 
-	final String URL = 'http://docs-angular.herokuapp.com/api/find';
-//	final String URL = 'http://localhost:8080/api/find';
+  final String URL = '${window.location.origin}/api/find';
 
 	Http _http;
 
