@@ -9,15 +9,23 @@ class SearchService {
   final String URL = urlDocs + "js/search-data.json";
 
   static get urlDocs => shared.Constants.angularSiteUrl;
+  Future<Map<String, List<Map>>> _documentation;
+
+  SearchService() {
+    _documentation = _getDocumentation();
+  }
 
   Future<String> search(query) {
 
     var searchQuery = Uri.decodeFull(query).toLowerCase();
 
-    return http
-      .get(URL)
-      .then((response) => _group(JSON.decode(response.body)))
+    return _documentation
       .then((groupedItems) => _filter(groupedItems, searchQuery));
+  }
+
+  Future<Map<String, List<Map>>> _getDocumentation() {
+    return http.get(URL)
+      .then((response) => _group(JSON.decode(response.body)));
   }
 
   Map<String, List<Map>> _group(Iterable<Map> items) {
