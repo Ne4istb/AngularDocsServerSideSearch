@@ -16,5 +16,6 @@ transformers:
 - angular:
     html_files:
       - lib/search_result/search_result.html
+      - lib/spinner/spinner.html
 - $dart2js:
     minify: true

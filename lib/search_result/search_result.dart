@@ -1,4 +1,3 @@
-library search_result;
 
 import 'package:angular/angular.dart';
 import 'package:angularDartRemote/search_service.dart';
@@ -15,7 +14,7 @@ class SearchComponent {
 
   SearchService _searchService;
   var _result;
-  String query;
+  var _loading;
 
   SearchComponent(this._searchService, RouteProvider routeProvider) {
 
@@ -30,8 +29,17 @@ class SearchComponent {
   }
 
   void search() {
-    _searchService.find(query).then((result) => _result = result);
+
+    _loading = true;
+
+    _searchService.find(query)
+      .then((result) {
+        _result = result;
+        _loading = false;
+      });
   }
 
   get result => _result;
+  get loading => _loading;String query;
+
 }

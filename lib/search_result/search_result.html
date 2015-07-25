@@ -1,4 +1,4 @@
-<div>
+<div class="search-result-component">
     <div class="header container">
         <div class="row">
             <div class="image">
@@ -12,7 +12,12 @@
     </div>
     <div class="search-results-container">
         <div class="container">
-            <div class="search-results-frame">
+            
+            <div ng-show="loading">
+                <spinner/>
+            </div>
+
+            <div ng-hide="loading" class="search-results-frame">
 
                 <div class="search-results-group" ng-repeat="group in result">
                     <h4 class="search-results-group-heading ng-binding">{{group.name}}</h4>
